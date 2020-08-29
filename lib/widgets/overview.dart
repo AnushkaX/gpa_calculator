@@ -115,10 +115,21 @@ class _OverviewState extends State<Overview> {
       appBar: AppBar(
         title: Text("GPA Calculator"),
       ),
-      body: Stack(
+      body: Column(
         children: <Widget>[
-          ListView(
-            children: _subjectFields,
+          Expanded(
+            child: ListView(
+              children: _subjectFields,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: RaisedButton(
+              color: Colors.black,
+              onPressed: () {},
+              child: const Text('Calculate', style: TextStyle(fontSize: 20)),
+              textColor: Colors.white,
+            ),
           ),
         ],
       ),
