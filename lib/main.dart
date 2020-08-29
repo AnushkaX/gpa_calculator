@@ -38,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Padding(
             padding: EdgeInsets.all(18.0),
             child: TextFormField(
-              controller: _controller,
               decoration: InputDecoration(
                 hintText: 'Subject Name',
                 floatingLabelBehavior: FloatingLabelBehavior.always,
