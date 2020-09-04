@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gpa_calculator/widgets/dropdown.dart';
+import 'package:gpa_calculator/widgets/gradesdropdown.dart';
 import 'package:gpa_calculator/widgets/overview.dart';
 
 void main() {

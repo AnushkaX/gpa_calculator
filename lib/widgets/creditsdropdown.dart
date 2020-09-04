@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DropDown extends StatefulWidget {
+class CreditDropDown extends StatefulWidget {
   @override
-  _DropDownState createState() => _DropDownState();
+  _CreditDropDownState createState() => _CreditDropDownState();
 }
 
-class _DropDownState extends State<DropDown> {
-  String dropdownValue = 'A+';
+class _CreditDropDownState extends State<CreditDropDown> {
+  String dropdownValue = '1';
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -24,11 +24,18 @@ class _DropDownState extends State<DropDown> {
             dropdownValue = newValue;
           });
         },
-        items: <String>['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D',]
-            .map<DropdownMenuItem<String>>((String value) {
+        items: <String>[
+          '4',
+          '3',
+          '2',
+          '1',
+        ].map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
-            child: Text(value, textAlign: TextAlign.center,),
+            child: Text(
+              value,
+              textAlign: TextAlign.center,
+            ),
           );
         }).toList(),
       ),

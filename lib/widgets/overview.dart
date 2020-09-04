@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gpa_calculator/widgets/dropdown.dart';
+import 'package:gpa_calculator/widgets/creditsdropdown.dart';
+import 'package:gpa_calculator/widgets/gradesdropdown.dart';
 
 class Overview extends StatefulWidget {
   Overview({Key key, this.title}) : super(key: key);
@@ -12,6 +13,30 @@ class Overview extends StatefulWidget {
 
 class _OverviewState extends State<Overview> {
   int _counter = 0;
+  String _currentCredit = "1";
+
+  final List<TextEditingController> _gradeTextEditingControllers =
+      List<TextEditingController>();
+
+  List<DropdownMenuItem<String>> _credits = <String>[
+    '4',
+    '3',
+    '2',
+    '1',
+  ].map<DropdownMenuItem<String>>((String value) {
+    return DropdownMenuItem<String>(
+      value: value,
+      child: Text(
+        value,
+        textAlign: TextAlign.center,
+      ),
+    );
+  }).toList();
+
+  void _addNewSubjectInputField() {
+    _gradeTextEditingControllers.add(TextEditingController());
+    setState(() {});
+  }
 
   List<Widget> _subjectFields = [
     Row(
@@ -30,7 +55,12 @@ class _OverviewState extends State<Overview> {
         Expanded(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: DropDown(),
+          child: GradeDropDown(),
+        )),
+        Expanded(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CreditDropDown(),
         )),
       ],
     ),
@@ -50,7 +80,12 @@ class _OverviewState extends State<Overview> {
         Expanded(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: DropDown(),
+          child: GradeDropDown(),
+        )),
+        Expanded(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CreditDropDown(),
         )),
       ],
     ),
@@ -70,7 +105,12 @@ class _OverviewState extends State<Overview> {
         Expanded(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: DropDown(),
+          child: GradeDropDown(),
+        )),
+        Expanded(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CreditDropDown(),
         )),
       ],
     ),
@@ -82,7 +122,8 @@ class _OverviewState extends State<Overview> {
     });
   }
 
-  void addSubjectField() {
+  void _addSubjectField() {
+    _addNewSubjectInputField();
     _subjectFields = List.from(_subjectFields)
       ..add(
         Row(
@@ -101,7 +142,17 @@ class _OverviewState extends State<Overview> {
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: DropDown(),
+              child: GradeDropDown(),
+            )),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DropdownButton(
+                isExpanded: true,
+                items: _credits,
+                //onChanged: changeSelectedBrand,
+                value: _currentCredit,
+              ),
             )),
           ],
         ),
@@ -134,7 +185,7 @@ class _OverviewState extends State<Overview> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: addSubjectField,
+        onPressed: _addSubjectField,
         tooltip: 'Add Field',
         child: Icon(Icons.add),
       ),
